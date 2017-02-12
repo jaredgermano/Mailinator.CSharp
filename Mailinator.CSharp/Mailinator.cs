@@ -48,7 +48,10 @@ namespace Mailinator.CSharp
             if (result.IsSuccessStatusCode)
             {
                 var content = await result.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<T>(content);
+                return JsonConvert.DeserializeObject<T>(content, new JsonSerializerSettings()
+                {
+                    DateFormatString = "ddd, dd MMM yyyy hh:mm:ss zzz (PST)"
+                });
             }
             else
             {
