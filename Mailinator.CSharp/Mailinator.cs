@@ -43,7 +43,7 @@ namespace Mailinator.CSharp
 
         private async Task<T> Get<T>(string url)
         {
-            var result = await _Client.GetAsync(url);
+            var result = await _Client.GetAsync(new Uri(url));
 
             if (result.IsSuccessStatusCode)
             {
